@@ -1,0 +1,14 @@
+h1 {
+    color: indianred;
+    margin-top: 110px;
+}
+
+#demo {
+    color: white;
+    text-decoration: underline;
+    text-align: right;
+}
+
+#demo:hover {
+    cursor: progress;
+}

@@ -1,0 +1,4 @@
+https://www.youtube.com/watch?v=WG5IFCZxDO4
+
+    "test": "webpack-dev-server --hot --inline --progress  --content-base ../",
+    "prod": "webpack --progress --color --watch",
