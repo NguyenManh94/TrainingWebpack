@@ -1,14 +1,29 @@
+@font-face {
+    font-family: fontLight;
+    src: url(css/fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: fontRegular;
+    src: url(css/fonts/Roboto-regular.ttf);
+}
+
 h1 {
-    color: indianred;
+    color: brown;
     margin-top: 110px;
 }
 
 #demo {
     color: white;
     text-decoration: underline;
-    text-align: right;
+    text-align: center;
 }
 
 #demo:hover {
-    cursor: progress;
+    cursor: pointer;
+}
+
+#font-bundle {
+    font-family: fontLight;
+    color: aqua;
 }

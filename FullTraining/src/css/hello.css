@@ -1,13 +1,7 @@
 body {
     background: url(img/bg.jpg);
 }
-
-@font-face {
+/*
+#font-bundle {
     font-family: fontLight;
-    src: url(fonts/Roboto-Light.ttf);
-}
-
-@font-face {
-    font-family: fontRegular;
-    src: url(fonts/Roboto-regular.ttf);
-}
+}*/

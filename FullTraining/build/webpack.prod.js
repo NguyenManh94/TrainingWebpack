@@ -44,12 +44,23 @@ _.merge(config.entry, new_entry); //use lodash add object
 _.merge(config, {
   watch: true
 });
+_.merge(config.output, {
+  publicPath: '/' //Set path resolve url image in css
+});
 
 //add loaders support
 config.module.loaders = config.module.loaders.concat([
   {
     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: "file-loader?name=[path]-[name].[ext]"
+  },
+  {
+    test: /\.(png|jpg)$/,
+    loader: 'url-loader',
+    query: {
+      limit: 10240,
+      name: '[path][name]-[hash:7].[ext]'
+    }
   }
 ]);
 

@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static('views'));
 
 app.use(session({
-  secret: 'teamdevmasterleadmanhnv',
+  secret: 'teamdevmasterleadmanhnv_master',
   resave: true,
   saveUninitialized: false
 }));

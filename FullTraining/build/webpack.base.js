@@ -7,24 +7,23 @@ var root = path.resolve(__dirname, '../');
 
 module.exports = {
   entry: {
-    app: ['./src/main.css', './src/main.js']
+    "app": ['./src/main.css', './src/main.js']
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: '[name].min.js',
-    // publicPath: '/dist/'
+    path: path.resolve(root, 'dist'),
+    filename: '[name].min.js'
   },
   resolve: {
-    extension: ['', '.js', '.css']
+    extension: ['', '.js', '.css', '.es6']
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_module|bower_component)/,
-        loader: 'eslint-loader',
-      }
-    ],
+    /*preLoaders: [
+     {
+     test: /\.js$/,
+     exclude: /(node_module|bower_component)/,
+     loader: 'eslint-loader',
+     }
+     ],*/
     loaders: [
       {
         test: /\.css$/,
@@ -36,16 +35,12 @@ module.exports = {
         exclude: /(node_module| bower_components)/,
         loader: 'babel',
         include: root
-      },
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000000,
-          name: '[name]-[hash:7].[ext]'
-        }
       }
     ]
+  },
+  devServer: {
+    hot: true,
+    inline: true
   },
   devtool: null,
   watch: null,
@@ -58,7 +53,7 @@ module.exports = {
     //   },
     // })
   ],
-  eslint: {
-    configFile: path.resolve(root, './.eslintrc')
-  }
+  /*eslint: {
+   configFile: path.resolve(root, './.eslintrc')
+   }*/
 };

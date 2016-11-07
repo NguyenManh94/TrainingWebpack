@@ -4,9 +4,9 @@
   "description": "webpack tutorial",
   "main": "index.js",
   "scripts": {
-    "run": "node app.js",
+    "run": "nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
     "build": "node build/build.js",
-    "dev": "nodemon build/dev.js"
+    "dev": "node build/dev.js"
   },
   "repository": {
     "type": "git",

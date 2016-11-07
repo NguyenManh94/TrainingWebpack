@@ -1,25 +1,32 @@
 var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractCSS = new ExtractTextPlugin('css/[name].min.css');
+var autoprefixer = require('autoprefixer'); //tu dong fix css voi cac trinh duyet
+var _ = require('lodash');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var root = path.resolve(__dirname);
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//var extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
-// var webpack = require('webpack');
-// var extractCSS = new ExtractTextPlugin('bundle.css');
 
 module.exports = {
   entry: {
-    app: ['./src/main.css', './src/main.js']
+    app: ['./src/main.css', './src/main.js'],
+    "publicJS/ex2": "./src/publicJS/ex2.js",
+    "publicJS/ex1": "./src/publicJS/ex1.js",
+    "app-home": "./src/app-home"
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].min.js'
+    // publicPath: '/dist/'
   },
   resolve: {
     extension: ['', '.js', '.css']
   },
   devServer: {
     progress: true,
-    port: 82  //default: 8080
+    port: 82,  //default: 8080
+    inline: true,
+    contentBase: './dist',
   },
   module: {
     loaders: [
@@ -32,7 +39,7 @@ module.exports = {
       {
         test: /\.css$/,
         // loader: extractCSS.extract(["css"])
-        loaders: ['style', 'css']
+        loaders: ['style', 'css', 'resolve-url']
       },
       {
         test: /\.(png|jpg)$/,
@@ -41,16 +48,35 @@ module.exports = {
           limit: 10000,
           name: '[name]-[hash:7].[ext]'
         }
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader?name=[path]-[name].[ext]"
       }
     ]
   },
   plugins: [
-    // extractCSS,
-    // new webpack.optimize.UglifyJsPlugin({
-    //   comments: false,
-    //   compress: {
-    //     warnings: false
-    //   },
-    // })
+    extractCSS,
+    /*Co the tao nhieu common chunk plugin*/
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "publicJS/ex-common",
+      chunks: ["publicJS/ex2", "publicJS/ex1"]
+    }),
+    /*Tao 1 banner chung*/
+    new webpack.BannerPlugin("Author: ManhNV11 -MasterJs"),
+    new HtmlWebpackPlugin({
+      template: path.resolve(root, 'src/index.html'),
+      hash: true,
+      cache: true,
+      showErrors: false, //neu co loi sẽ ghi vào file html
+      minify: false,
+      filename: 'index.html',
+      favicon: 'src/favicon.ico',
+      chunks: ['app', 'publicJS/ex-common', 'publicJS/ex2', 'publicJS/ex1', 'app-home'],
+      chunksSortMode: function (a, b) {
+        return (a.names[0] > b.names[0]) ? 1 : -1;
+      },
+      inject: 'body' //value: head =>header, true => lan lon ca 2
+    })
   ]
 };

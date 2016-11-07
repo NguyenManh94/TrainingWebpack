@@ -1,16 +1,16 @@
 var webpack = require('webpack');
 var config = require('./webpack.dev');
 var webpackDevServer = require('webpack-dev-server');
-var port = 82;
+var port = 8080;
 config.entry.app.unshift(`webpack-dev-server/client?http://localhost:${port}/`
   , "webpack/hot/dev-server"); //su dung thay tu dong change reload khi thay doi code
 
 /*su dung thong qua may ao hrm middleware*/
-// config.entry.app.unshift("webpack-hot-middleware/client");
-// var compiler = webpack(config);
-// var hotMiddleware = require('webpack-hot-middleware')(compiler);
+/*config.entry.app.unshift("webpack-hot-middleware/client");
+ var compiler = webpack(config);
+ var hotMiddleware = require('webpack-hot-middleware')(compiler);
 
-// var server = new webpackDevServer(compiler, {
+ var server = new webpackDevServer(compiler, {*/
 var server = new webpackDevServer(webpack(config), {
   hot: true,
   /*proxy: {
@@ -19,15 +19,16 @@ var server = new webpackDevServer(webpack(config), {
    changeOrigin: true
    }
    },*/
-  contentBase: './dist/',
+  contentBase: '../dist',
   quiet: false,
   noInfo: false,
+  inline: true,
   progress: true,
-  publicPath: config.output.publicPath,
+  publicPath: '/',
   stats: {colors: true}
 });
 
-// server.use(hotMiddleware)
+// server.use(hotMiddleware);
 
 server.listen(port, function (err) {
   if (err) {
