@@ -49,7 +49,7 @@ config.plugins = config.plugins.concat([
   new webpack.BannerPlugin("Author: ManhNV11 -MasterJs"),
   new HtmlWebpackPlugin({
     template: path.resolve(root, 'src/index.html'),
-    hash: true,
+    hash: false,
     cache: true,
     showErrors: false, //neu co loi sẽ ghi vào file html
     minify: false,

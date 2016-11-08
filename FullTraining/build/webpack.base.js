@@ -21,7 +21,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(root, 'dist/public'),
+    path: path.resolve(root, 'dist'), //set path default
     filename: '[name].min.js'
   },
   resolve: {
@@ -33,7 +33,7 @@ module.exports = {
         test: /\.css$/,
         // loader: extractCSS.extract(["css"])
         exclude: /(node_module|bower_components)/,
-        loaders: ['style', 'css', 'resolve-url', 'postcss']
+        loaders: ['style-loader', 'css-loader?source-map', 'resolve-url', 'postcss']
       },
       {
         test: /\.js$/,

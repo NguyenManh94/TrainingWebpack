@@ -57,6 +57,10 @@ _.merge(config, {
   }
 });
 
+//override
+config.output.path = path.resolve(root, 'dist/test');
+config.devtool = "source-map";
+
 //add loaders support
 config.module.loaders = config.module.loaders.concat([
   {
@@ -73,8 +77,10 @@ config.module.loaders = config.module.loaders.concat([
   }
 ]);
 
-// config.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor.min', 'vendor.min.js'));
-//add plugin support with env: production, su dung concat
+/*
+ config.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor.min', 'vendor.min.js'));
+ add plugin support with env: production, su dung concat
+ */
 config.plugins = config.plugins.concat([
   extractCSS,
   new webpack.optimize.UglifyJsPlugin({
@@ -94,7 +100,7 @@ config.plugins = config.plugins.concat([
    }),*/
   new HtmlWebpackPlugin({
     template: path.resolve(root, 'src/index.html'),
-    hash: true,
+    hash: false,
     cache: true,
     showErrors: false, //neu co loi sẽ ghi vào file html
     minify: optionHtmlMinify,

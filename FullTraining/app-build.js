@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Set default path => Show and connect file -html.css and javascript
-app.use(express.static(path.join(__dirname, 'dist/public')));
+app.use(express.static(path.join(__dirname, 'dist/build')));
 app.use(express.static(path.join(__dirname, 'asset-static')));
 app.use(express.static('views'));
 console.log(path.resolve(__dirname, '..'));
@@ -32,7 +32,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.listen(84, () => {
+app.listen(82, () => {
   "use strict";
-  console.log('App running port: ' + 84);
+  console.log('App running port: ' + 82);
 });

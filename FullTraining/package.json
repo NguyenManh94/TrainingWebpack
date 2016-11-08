@@ -7,6 +7,7 @@
     "run-build": "nodemon app-build.js --ignore src/ --ignore dist/ --ignore build/",
     "run-test": "nodemon app-test.js --ignore src/ --ignore dist/ --ignore build/",
     "build": "node build/build.js",
+    "test": "node build/test.js",
     "dev": "node build/dev.js"
   },
   "repository": {
@@ -34,6 +35,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^3.0.0",
     "nodemon": "^1.11.0",
     "ora": "^0.3.0",
     "postcss-loader": "^1.1.0",
