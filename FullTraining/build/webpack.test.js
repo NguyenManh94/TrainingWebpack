@@ -40,7 +40,7 @@ var new_entry = {
   "app-home": "./src/app-home"
 };
 _.merge(config.entry, new_entry); //use lodash add object
-_.merge(config, {watch: true});
+_.merge(config, {watchOptions: {aggregateTimeout: 500}}, {watch: true}); //delay watch 500ms
 _.merge(config.output, {publicPath: '/'});//Set path resolve url image in css
 _.merge(config.module, {
   preLoaders: [
@@ -64,7 +64,8 @@ config.devtool = "source-map";
 //add loaders support
 config.module.loaders = config.module.loaders.concat([
   {
-    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    exclude: /(node_module)/,
     loader: "file-loader?name=[path][name].[ext]"
   },
   {
@@ -107,8 +108,8 @@ config.plugins = config.plugins.concat([
     filename: 'index.html',
     favicon: 'src/favicon.ico',
     // chunks: ['css/style', 'app', 'publicJS/ex-common', 'publicJS/ex2', 'publicJS/ex1', 'app-home'],
-    chunks: ['vendor', 'app', 'publicJS/ex2', 'app-home'],
-    chunksSortMode: orderByList(['vendor.min', 'app', 'publicJS/ex2', 'app-home']),
+    chunks: ['css/bootstrap', 'vendor', 'app', 'publicJS/ex2', 'app-home'],
+    chunksSortMode: orderByList(['vendor', 'app', 'publicJS/ex2', 'app-home']),
     inject: 'body' //value: head =>header, true => lan lon ca 2
   })
 ]);

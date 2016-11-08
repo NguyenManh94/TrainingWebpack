@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var ora = require('ora'); //ghi tien trinh thuc hien ra
 var conf = require('./webpack.prod.js');
 
-// var spinner = ora("System is bundle file watch running ....");
-// spinner.start();
-// spinner.color = 'red';
+var spinner = ora("System is bundle file watch running ....");
+spinner.start();
+spinner.color = 'red';
 rm('-rf', 'dist/build'); //xoa het thu muc cu va tao thu muc moi
 
 webpack(conf, function (err, stats) {

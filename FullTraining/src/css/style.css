@@ -1,14 +1,19 @@
+@import "../../asset-static/libs/bootstrap/dist/css/bootstrap.min.css";
+@import '../css/style-main.css';
+
 h1 {
     color: #449d44;
     margin-top: 120px;
 }
 
 #demo {
-    color: white;
+    color: red;
     text-decoration: underline;
     text-align: center;
 }
 
-#demo:hover {
-    cursor: progress;
+#demo :hover {
+    font-size: 30px !important;
+    cursor: progress !important;
+    font-style: italic;
 }

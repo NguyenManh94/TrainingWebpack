@@ -1,4 +1,17 @@
 h2 {
-    color: #265a88;
-    background-color: #00b3ee;
+    color: #4AA02C;
+    background-color: #204d74;
+}
+
+h1 {
+    color: yellow !important;
+}
+
+#demo {
+    color: #ce8483 !important;
+}
+
+#demo :hover {
+    font-size: 20px !important;
+    cursor: pointer !important;
 }

@@ -25,7 +25,7 @@ _.merge(config.entry, new_entry); //use lodash add object
 //add loaders support
 config.module.loaders = config.module.loaders.concat([
   {
-    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    test: /\.(ttf|eot|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: 'url-loader',
     query: {
       limit: 1024000000,
@@ -33,7 +33,7 @@ config.module.loaders = config.module.loaders.concat([
     }
   },
   {
-    test: /\.(png|jpg)$/,
+    test: /\.(png|jpg|svg)$/,
     loader: 'url-loader',
     query: {
       limit: 1024000000,
@@ -46,7 +46,7 @@ config.module.loaders = config.module.loaders.concat([
 config.plugins = config.plugins.concat([
   extractCSS,
   /*Tao 1 banner chung*/
-  new webpack.BannerPlugin("Author: ManhNV11 -MasterJs"),
+  new webpack.BannerPlugin("author: manhnguyen -masterJS"),
   new HtmlWebpackPlugin({
     template: path.resolve(root, 'src/index.html'),
     hash: false,

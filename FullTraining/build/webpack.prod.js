@@ -50,7 +50,7 @@ config.output.filename = 'script-[name].[hash].min.js';
 //add loaders support
 config.module.loaders = config.module.loaders.concat([
   {
-    test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    test: /\.(ttf|eot|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: "file-loader?name=[path]font-[sha512:hash:base64:7].[ext]"
   },
   {
@@ -117,11 +117,14 @@ config.module.loaders = config.module.loaders.concat([
 // config.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor.min', 'vendor.min.js'));
 //add plugin support with env: production, su dung concat
 config.plugins = config.plugins.concat([
+  new webpack.NoErrorsPlugin(), //neu loi thi chi xuat ra file html
   extractCSS,
   new webpack.optimize.UglifyJsPlugin({
     comments: false,
     compress: {
-      warnings: false
+      warnings: false,
+      drop_console: true,
+      unsafe: true
     }
   }),
   /*Co the tao nhieu common chunk plugin*/
@@ -143,7 +146,7 @@ config.plugins = config.plugins.concat([
     favicon: 'src/favicon.ico',
     // chunks: ['css/style', 'app', 'publicJS/ex-common', 'publicJS/ex2', 'publicJS/ex1', 'app-home'],
     chunks: ['vendor', 'app', 'publicJS/ex2', 'app-home'],
-    chunksSortMode: orderByList(['vendor.min', 'app', 'publicJS/ex2', 'app-home']),
+    chunksSortMode: orderByList(['vendor', 'app', 'publicJS/ex2', 'app-home']),
     inject: 'body' //value: head =>header, true => lan lon ca 2
   })
 ]);

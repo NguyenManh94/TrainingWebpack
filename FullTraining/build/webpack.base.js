@@ -14,11 +14,10 @@ module.exports = {
       `${root}/src/css/style.css`,
       `${root}/src/css/style-main.css`
     ],
-    "vendor": [
-      "lodash",
-      `${root}/node_modules/jquery/src/jquery.js`,
-      "bootstrap"
-    ]
+    /*"vendor": [
+     `${root}/node_modules/jquery/src/jquery.js`,
+     "bootstrap"
+     ]*/
   },
   output: {
     path: path.resolve(root, 'dist'), //set path default
@@ -33,7 +32,8 @@ module.exports = {
         test: /\.css$/,
         // loader: extractCSS.extract(["css"])
         exclude: /(node_module|bower_components)/,
-        loaders: ['style-loader', 'css-loader?source-map', 'resolve-url', 'postcss']
+        loaders: ['style', 'css?sourceMap'
+          , 'resolve-url', 'postcss']
       },
       {
         test: /\.js$/,
@@ -48,6 +48,10 @@ module.exports = {
   plugins: [
     // new webpack.optimize.CommonsChunkPlugin('vendor.min', 'vendor.min.js', Infinity),
     /*Tao 1 banner chung*/
-    new webpack.BannerPlugin("author: dev-easy manhnguyen")
+    new webpack.BannerPlugin("author: dev-easy manhnguyen"),
+    /*Defind 1 plugin cho he thong*/
+    /*new webpack.ProvidePlugin({
+     _: 'lodash'
+     })*/
   ]
 };
