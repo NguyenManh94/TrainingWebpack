@@ -1,12 +1,12 @@
 require('shelljs/global');
 var webpack = require('webpack');
 var ora = require('ora'); //ghi tien trinh thuc hien ra
-var conf = require('./webpack.prod.js');
+var conf = require('./webpack.test.js');
 
 // var spinner = ora("System is bundle file watch running ....");
 // spinner.start();
 // spinner.color = 'red';
-rm('-rf', 'dist/public'); //xoa het thu muc cu va tao thu muc moi
+rm('-rf', 'dist/test'); //xoa het thu muc cu va tao thu muc moi
 
 webpack(conf, function (err, stats) {
   if (err) throw err;

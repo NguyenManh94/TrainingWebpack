@@ -1,1 +1,3 @@
-console.log('Toi la ex1');
+var name = "Day la file ex1";
+
+export default name;

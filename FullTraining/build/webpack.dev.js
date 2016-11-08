@@ -17,9 +17,8 @@ var root = path.resolve(__dirname, '../');
  */
 //add entry new
 var new_entry = {
-  "publicJS/ex1": path.resolve(root, 'src/publicJS/ex1.js'),
-  "publicJS/ex2": path.resolve(root, 'src/publicJS/ex2.js'),
-  "app-home": path.resolve(root, 'src/app-home')
+  "publicJS/ex2": `${root}/src/publicJS/ex2.js`,
+  "app-home": `${root}/src/app-home`
 };
 _.merge(config.entry, new_entry); //use lodash add object
 
@@ -27,22 +26,25 @@ _.merge(config.entry, new_entry); //use lodash add object
 config.module.loaders = config.module.loaders.concat([
   {
     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    loader: "file-loader?name=[path]-[name].[ext]"
+    loader: 'url-loader',
+    query: {
+      limit: 1024000000,
+      name: '[path][name]-[hash:7].[ext]'
+    }
   },
   {
     test: /\.(png|jpg)$/,
-    loader: "file-loader?name=[name].[ext]"
+    loader: 'url-loader',
+    query: {
+      limit: 1024000000,
+      name: '[path][name]-[hash:7].[ext]'
+    }
   }
 ]);
 
 //add plugin support with env: production, su dung concat
 config.plugins = config.plugins.concat([
   extractCSS,
-  /*Co the tao nhieu common chunk plugin*/
-  new webpack.optimize.CommonsChunkPlugin({
-    name: "publicJS/ex-common",
-    chunks: ["publicJS/ex2", "publicJS/ex1"]
-  }),
   /*Tao 1 banner chung*/
   new webpack.BannerPlugin("Author: ManhNV11 -MasterJs"),
   new HtmlWebpackPlugin({
@@ -53,12 +55,13 @@ config.plugins = config.plugins.concat([
     minify: false,
     filename: 'index.html',
     favicon: 'src/favicon.ico',
-    chunks: ['app', 'publicJS/ex-common', 'publicJS/ex2', 'publicJS/ex1', 'app-home'],
+    chunks: ['vendor', 'app', 'publicJS/ex2', 'app-home'],
     chunksSortMode: function (a, b) {
       return (a.names[0] > b.names[0]) ? 1 : -1;
     },
     inject: 'body' //value: head =>header, true => lan lon ca 2
-  })
+  }),
+  new webpack.HotModuleReplacementPlugin()
 ]);
 
 var cssLoaders = config.module.loaders[0].loaders;

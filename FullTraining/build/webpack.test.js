@@ -42,6 +42,20 @@ var new_entry = {
 _.merge(config.entry, new_entry); //use lodash add object
 _.merge(config, {watch: true});
 _.merge(config.output, {publicPath: '/'});//Set path resolve url image in css
+_.merge(config.module, {
+  preLoaders: [
+    {
+      test: /\.js$/,
+      exclude: /(node_module|bower_component)/,
+      loader: 'eslint-loader',
+    }
+  ]
+});
+_.merge(config, {
+  eslint: {
+    configFile: path.resolve(root, '.eslintrc')
+  }
+});
 
 //add loaders support
 config.module.loaders = config.module.loaders.concat([

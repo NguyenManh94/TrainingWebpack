@@ -1,4 +1,5 @@
 import helloWorld from './hello.js';
+import './css/style-main.css';
 
 let demo = document.querySelector("#demo");
 demo.innerHTML = helloWorld;

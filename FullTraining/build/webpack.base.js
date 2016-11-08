@@ -1,5 +1,6 @@
 var path = require('path');
 var root = path.resolve(__dirname, '../');
+var webpack = require('webpack');
 //var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //var extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
 // var webpack = require('webpack');
@@ -7,27 +8,31 @@ var root = path.resolve(__dirname, '../');
 
 module.exports = {
   entry: {
-    "app": ['./src/main.css', './src/main.js']
+    /*must style with style ref (hello.css ref hello.js)*/
+    "app": [
+      `${root}/src/main.js`,
+      `${root}/src/css/style.css`,
+      `${root}/src/css/style-main.css`
+    ],
+    "vendor": [
+      "lodash",
+      `${root}/node_modules/jquery/src/jquery.js`,
+      "bootstrap"
+    ]
   },
   output: {
-    path: path.resolve(root, 'dist'),
+    path: path.resolve(root, 'dist/public'),
     filename: '[name].min.js'
   },
   resolve: {
     extension: ['', '.js', '.css', '.es6']
   },
   module: {
-    /*preLoaders: [
-     {
-     test: /\.js$/,
-     exclude: /(node_module|bower_component)/,
-     loader: 'eslint-loader',
-     }
-     ],*/
     loaders: [
       {
         test: /\.css$/,
         // loader: extractCSS.extract(["css"])
+        exclude: /(node_module|bower_components)/,
         loaders: ['style', 'css', 'resolve-url', 'postcss']
       },
       {
@@ -38,22 +43,11 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    hot: true,
-    inline: true
-  },
   devtool: null,
   watch: null,
   plugins: [
-    // extractCSS,
-    // new webpack.optimize.UglifyJsPlugin({
-    //   comments: false,
-    //   compress: {
-    //     warnings: false
-    //   },
-    // })
-  ],
-  /*eslint: {
-   configFile: path.resolve(root, './.eslintrc')
-   }*/
+    // new webpack.optimize.CommonsChunkPlugin('vendor.min', 'vendor.min.js', Infinity),
+    /*Tao 1 banner chung*/
+    new webpack.BannerPlugin("author: dev-easy manhnguyen")
+  ]
 };

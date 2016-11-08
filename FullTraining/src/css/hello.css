@@ -1,7 +1,18 @@
 body {
     background: url(img/bg.jpg);
 }
-/*
-#font-bundle {
+
+@font-face {
     font-family: fontLight;
-}*/
+    src: url(fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: fontRegular;
+    src: url(fonts/Roboto-regular.ttf);
+}
+
+#font-bundle {
+    font-family: Consolas;
+    color: aqua;
+}

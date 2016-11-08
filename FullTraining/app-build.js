@@ -21,8 +21,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Set default path => Show and connect file -html.css and javascript
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/public')));
+app.use(express.static(path.join(__dirname, 'asset-static')));
 app.use(express.static('views'));
+console.log(path.resolve(__dirname, '..'));
 
 app.use(session({
   secret: 'teamdevmasterleadmanhnv_master',

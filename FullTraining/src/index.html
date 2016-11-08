@@ -3,11 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Training Russisan webpack</title>
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+
 </head>
 <body>
 <h1>Webpack Training Russian</h1>
 
-<div id="demo"></div>
+<a href="http://takeit.vn">
+    <div id="demo"></div>
+</a>
 <p id="font-bundle">Test font bundle</p>
+
+<h2>Day la the h2 co sử dụng style-a</h2>
+<hr/>
+<h3>Day la the h2 co sử dụng style-b</h3>
+
+<!-- Button trigger modal -->
+<button class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" style="text-align: center">
+    Click Liên Hệ Người Dùng
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông tin xác nhận</h4>
+            </div>
+            <div class="modal-body">
+                Submit
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Địa Chỉ Email: </label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mật Khẩu:</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label class="btn btn-default btn-file">
+                            Browse <input type="file" id="exampleInputFile" style="display: none;">
+                        </label>
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Nhớ hoạt động
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Gửi thông tin</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Lưu trữ thông tin</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

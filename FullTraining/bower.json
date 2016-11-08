@@ -1,0 +1,21 @@
+{
+  "name": "full-training",
+  "description": "webpack tutorial",
+  "main": "index.js",
+  "authors": [
+    "nguyenmanh"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "js",
+    "es6",
+    "webpack"
+  ],
+  "homepage": "https://github.com/NguyenManh94/TrainingWebpack",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "lodash": "^4.16.6"
+  }
+}

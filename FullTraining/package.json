@@ -4,7 +4,8 @@
   "description": "webpack tutorial",
   "main": "index.js",
   "scripts": {
-    "run": "nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
+    "run-build": "nodemon app-build.js --ignore src/ --ignore dist/ --ignore build/",
+    "run-test": "nodemon app-test.js --ignore src/ --ignore dist/ --ignore build/",
     "build": "node build/build.js",
     "dev": "node build/dev.js"
   },
@@ -48,9 +49,11 @@
     "autoprefixer": "^6.5.2",
     "babel-runtime": "^6.18.0",
     "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "jquery": "^3.1.1",
     "lodash": "^4.16.6",
     "morgan": "^1.7.0",
     "request": "^2.78.0"
