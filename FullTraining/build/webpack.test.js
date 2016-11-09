@@ -2,7 +2,7 @@ var path = require('path');
 var config = require('./webpack.base');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('css/[name].min.css');
+var extractCSS = new ExtractTextPlugin('css/[name].min.css', {allChunks: true});
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var root = path.resolve(__dirname, '../');
 var autoprefixer = require('autoprefixer'); //tu dong fix css voi cac trinh duyet
@@ -85,9 +85,12 @@ config.module.loaders = config.module.loaders.concat([
 config.plugins = config.plugins.concat([
   extractCSS,
   new webpack.optimize.UglifyJsPlugin({
-    comments: false,
+    minimize: true,
+    comments: true,
     compress: {
-      warnings: false
+      warnings: true,
+      drop_console: false,
+      unsafe: false
     }
   }),
   /*Co the tao nhieu common chunk plugin*/

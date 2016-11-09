@@ -38,8 +38,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_module| bower_components)/,
-        loader: 'babel',
-        include: root
+        loader: 'babel'
       }
     ]
   },

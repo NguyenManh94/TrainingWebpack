@@ -4,8 +4,8 @@
   "description": "webpack tutorial",
   "main": "index.js",
   "scripts": {
-    "run-build": "nodemon app-build.js --ignore src/ --ignore dist/ --ignore build/",
-    "run-test": "nodemon app-test.js --ignore src/ --ignore dist/ --ignore build/",
+    "run-build": "SET NODE_ENV=production&node build/build.js&nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
+    "run-test": "SET NODE_ENV=developmen&node build/test.jst&nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
     "build": "node build/build.js",
     "test": "node build/test.js",
     "dev": "node build/dev.js"
@@ -56,6 +56,7 @@
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "express-session-mongo": "^0.1.0",
     "jquery": "^3.1.1",
     "lodash": "^4.16.6",
     "morgan": "^1.7.0",

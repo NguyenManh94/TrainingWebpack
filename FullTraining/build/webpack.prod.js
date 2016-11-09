@@ -2,7 +2,7 @@ var path = require('path');
 var config = require('./webpack.base');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractCSS = new ExtractTextPlugin('css/style-[hash].min.css');
+var extractCSS = new ExtractTextPlugin('css/style-[hash].min.css', {allChunks: true});
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var root = path.resolve(__dirname, '../');
 var autoprefixer = require('autoprefixer'); //tu dong fix css voi cac trinh duyet
@@ -120,6 +120,7 @@ config.plugins = config.plugins.concat([
   new webpack.NoErrorsPlugin(), //neu loi thi chi xuat ra file html
   extractCSS,
   new webpack.optimize.UglifyJsPlugin({
+    minimize: true,
     comments: false,
     compress: {
       warnings: false,
