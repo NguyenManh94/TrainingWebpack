@@ -11,6 +11,7 @@ var request = require('request');
 var MongoStore = require('express-session-mongo');
 
 var app = express();
+var port = process.env.PORT || 84; //default port 84 with env: test
 var env = process.env.NODE_ENV || "development";
 
 // View engine default
@@ -25,8 +26,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Set default path => Show and connect file -html.css and javascript
 if (env !== "development") {
   app.use(express.static(path.join(__dirname, 'dist/build')));
+  port = 82;
 } else {
   app.use(express.static(path.join(__dirname, 'dist/test')));
+  port = 84;
 }
 
 app.use(express.static(path.join(__dirname, 'asset-static')));
@@ -40,9 +43,10 @@ app.use(session({
   store: new MongoStore()
 }));
 
-app.listen(82, () => {
+
+app.listen(port, () => {
   "use strict";
-  console.log('App running port: ' + 82);
+  console.log('App running port: ' + port);
 });
 
 exports = module.exports = app;

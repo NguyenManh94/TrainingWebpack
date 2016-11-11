@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run-build": "SET NODE_ENV=production&node build/build.js&nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
-    "run-test": "SET NODE_ENV=developmen&node build/test.jst&nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
+    "run-test": "nodemon app.js --ignore src/ --ignore dist/ --ignore build/",
     "build": "node build/build.js",
     "test": "node build/test.js",
     "dev": "node build/dev.js"

@@ -121,10 +121,10 @@ config.plugins = config.plugins.concat([
   extractCSS,
   new webpack.optimize.UglifyJsPlugin({
     minimize: true,
-    comments: false,
+    comments: false, //false: hủy toàn bộ comment khi bundle
     compress: {
-      warnings: false,
-      drop_console: true,
+      warnings: false,  //thông báo lỗi khi nén
+      drop_console: true, //hủy hết console.log khi bundle
       unsafe: true
     }
   }),

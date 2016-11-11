@@ -66,17 +66,18 @@ module.exports = {
     new webpack.BannerPlugin("Author: ManhNV11 -MasterJs"),
     new HtmlWebpackPlugin({
       template: path.resolve(root, 'src/index.html'),
-      hash: true,
-      cache: true,
+      hash: true, //them thẻ <script> với đường link đính kèm 1 mã hash
+      cache: true, //cache file nếu có ko co thay đổi thì ko bundle lại
       showErrors: false, //neu co loi sẽ ghi vào file html
-      minify: false,
+      minify: false, //false: ko minify html ngước lại tru: minify html
       filename: 'index.html',
-      favicon: 'src/favicon.ico',
+      favicon: 'src/favicon.ico', //them file favicon vào trang html
+      /*nạp các nhánh javascript bundle vào file html*/
       chunks: ['app', 'publicJS/ex-common', 'publicJS/ex2', 'publicJS/ex1', 'app-home'],
       chunksSortMode: function (a, b) {
         return (a.names[0] > b.names[0]) ? 1 : -1;
-      },
-      inject: 'body' //value: head =>header, true => lan lon ca 2
+      }, //sắp xếp lại các file script chèn vào theo đúng thứ tự
+      inject: 'body' //có 2 gia trị là body và head (chèn mã script vào nơi tương ứng)
     })
   ]
 };
